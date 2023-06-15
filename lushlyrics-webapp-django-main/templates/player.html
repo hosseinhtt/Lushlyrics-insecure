@@ -113,7 +113,7 @@
             </div>
 
 
-            <a class="profile-container" href="user/logout">
+            <a class="profile-container" href="logout">
                 <button class="profile">
                     <div class="profile-pic">
                         <svg width="16" height="16" fill="white" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,8 @@
                                 <img class="albumimg" src="{{ card.0 }}" alt="" srcset=""></img>
                                 <div class="albumplay" onclick='playSong("{{ forloop.counter0 }}","{{ playlist.2 }}")'>
                                     <img src="https://cdn.discordapp.com/attachments/768083738848133130/769476261181128734/image_1.png"
-                                        alt=""></img></div>
+                                        alt=""></img>
+                                </div>
                             </div>
                             <span class='label albumtitle bond-to-two-lines'>{{ card.1 }}</span>
                             <span class='label albumauthor bond-to-two-lines'>By {{ card.2 }}</span>

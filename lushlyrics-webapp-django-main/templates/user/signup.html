@@ -19,16 +19,32 @@
         const confirm_password = document.getElementById("cpwd");
         var password = document.getElementById("pwd").value;
         console.log(password)
-        if (password != confirm_password.value) {
-            confirm_password.setCustomValidity("Password did not match");
+        if (password1 != password2.value) {
+            password2.setCustomValidity("Password did not match");
         } else {
-            confirm_password.setCustomValidity("");
+            password2.setCustomValidity("");
         }
     }
 </script>
 
 <body>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
+    {% if form.errors %}
+    <ul>
+        {% for field in form %}
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     <div class="signup_header">
         <a href="" target="_blank">
@@ -41,7 +57,7 @@
 
             <span class='label signup-title center-align'>Sign up for free to start listening.</span>
             <label for="sign-up-username" class="label">
-                What's your name?{% if not username %}
+                What's your name?{% if username %}
                 <span style="color:#f79862;">Username already exists</span>
                 {% endif %}
             </label>
@@ -62,18 +78,18 @@
             <label for="sign-up-pwd" class="label">
                 Create a password
             </label>
-            <input type="password" class="form_input" id="pwd" name="password" placeholder="Create a password."
+            <input type="password" class="form_input" id="pwd" name="password1" placeholder="Create a password."
                 required>
 
             <label for="sign-up-cpwd" class="label">
                 Confirm your password
             </label>
-            <input type="password" class="form_input" id="cpwd" name="confirm-password" oninput="checkPassword(this)"
+            <input type="password" class="form_input" id="cpwd" name="password2" oninput="checkPassword(this)"
                 placeholder="Re-type your password" required>
 
             <button class='btn btn_log_in' type="submit">Sign up</button>
             <div class="divider"></div>
-            <p class='label center-align'>Already have an account? <a href="/user/login">Log in</a>.</p>
+            <p class='label center-align'>Already have an account? <a href="{% url 'login' %}">Log in</a>.</p>
         </form>
     </div>
 
