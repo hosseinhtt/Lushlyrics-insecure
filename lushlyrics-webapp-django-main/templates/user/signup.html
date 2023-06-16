@@ -28,23 +28,26 @@
 </script>
 
 <body>
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
-    {% if form.errors %}
-    <ul>
-        {% for field in form %}
-        {% for error in field.errors %}
-        <li>{{ error }}</li>
-        {% endfor %}
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="container message">
+        {% if messages %}
+        <ul style="text-align: center;">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="container error">
+        {% if form.errors %}
+        <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
 
     <div class="signup_header">
         <a href="" target="_blank">
